@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hexo是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，可以按照指定的主题解析成静态网页。结合Github pages的托管服务，可以将Hexo生成的静态网页发布，供其他人访问，轻松搭建免费的个人博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo和github搭建个人博客-基础配置篇①">
+<meta property="og:url" content="http://example.com/2022/06/11/%E5%9F%BA%E4%BA%8EHexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%871/index.html">
+<meta property="og:site_name" content="元气加油站">
+<meta property="og:description" content="Hexo是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，可以按照指定的主题解析成静态网页。结合Github pages的托管服务，可以将Hexo生成的静态网页发布，供其他人访问，轻松搭建免费的个人博客。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551181428283.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg">
+<meta property="og:image" content="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551094128956.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg">
+<meta property="og:image" content="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551102710873.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg">
+<meta property="og:image" content="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551195539085.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg">
+<meta property="article:published_time" content="2022-06-11T11:45:57.000Z">
+<meta property="article:modified_time" content="2022-06-13T12:21:28.077Z">
+<meta property="article:author" content="ze-yuan">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551181428283.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg">
+
+
+<link rel="canonical" href="http://example.com/2022/06/11/%E5%9F%BA%E4%BA%8EHexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%871/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/06/11/%E5%9F%BA%E4%BA%8EHexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%871/","path":"2022/06/11/基于Hexo和github搭建个人博客-基础配置篇1/","title":"基于Hexo和github搭建个人博客-基础配置篇①"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于Hexo和github搭建个人博客-基础配置篇① | 元气加油站</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">元气加油站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">总归是应该多多学习的</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EHexo%E7%94%9F%E6%88%90%E6%9C%AC%E5%9C%B0%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">基于Hexo生成本地静态博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E6%8F%90"><span class="nav-number">1.1.</span> <span class="nav-text">安装前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Hexo"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0Hexo%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.3.</span> <span class="nav-text">创建本地Hexo博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%88%B0GitHub-pages"><span class="nav-number">2.</span> <span class="nav-text">部署静态博客到GitHub pages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github%E8%B4%A6%E5%8F%B7%E6%B3%A8%E5%86%8C%E4%B8%8E%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">Github账号注册与仓库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%9C%AC%E5%9C%B0Git%E4%B8%8EGithub"><span class="nav-number">2.2.</span> <span class="nav-text">链接本地Git与Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E7%BD%91%E7%AB%99"><span class="nav-number">2.3.</span> <span class="nav-text">发布网站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">3.</span> <span class="nav-text">后续</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ze-yuan"
+      src="/images/ze-yuan_0.gif">
+  <p class="site-author-name" itemprop="name">ze-yuan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/11/%E5%9F%BA%E4%BA%8EHexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%871/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/ze-yuan_0.gif">
+      <meta itemprop="name" content="ze-yuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="元气加油站">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于Hexo和github搭建个人博客-基础配置篇① | 元气加油站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Hexo和github搭建个人博客-基础配置篇①
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-11 19:45:57" itemprop="dateCreated datePublished" datetime="2022-06-11T19:45:57+08:00">2022-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-13 20:21:28" itemprop="dateModified" datetime="2022-06-13T20:21:28+08:00">2022-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hexo是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，可以按照指定的主题解析成静态网页。结合Github pages的托管服务，可以将Hexo生成的静态网页发布，供其他人访问，轻松搭建免费的个人博客。</p>
+<span id="more"></span>
+
+<p>基于Hexo和GitHub pages搭建个人博客大体上可分为两步：</p>
+<ol>
+<li>基于Hexo生成本地静态博客</li>
+<li>部署静态博客到GitHub pages供其他人访问</li>
+</ol>
+<h2 id="基于Hexo生成本地静态博客"><a href="#基于Hexo生成本地静态博客" class="headerlink" title="基于Hexo生成本地静态博客"></a>基于Hexo生成本地静态博客</h2><h3 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h3><p>Hexo基于Node.js，生成静态博客后，需要基于分布式版本控制工具Git将本地网页文件上传到Github。因此，在安装Hexo之前，首先需要安装下列应用程序：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">git</a></li>
+</ul>
+<p>若Node.js和git安装成功，终端输入<code>node -v</code>、<code>npm -v</code>和<code>git --version</code>，会显示版本号。</p>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
+<p>安装以后，可以使用以下命令执行 Hexo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo &lt;command&gt;</span><br></pre></td></tr></table></figure>
+<p>若安装成功，可通过<code>npx hexo -v </code>命令查看安装的Hexo版本。为保证更好的运行，建议永远安装最新版本的 Hexo，以及 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">推荐的 Node.js 版本</a></p>
+<h3 id="创建本地Hexo博客"><a href="#创建本地Hexo博客" class="headerlink" title="创建本地Hexo博客"></a>创建本地Hexo博客</h3><p>安装 Hexo 完成后，执行下列命令创建本地博客，Hexo 将会在指定文件夹中新建所需要的文件，该文件夹即为存储本地博客的位置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx hexo init &lt;绝对路径&gt;</span><br><span class="line">cd &lt;绝对路径&gt;</span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
+<p>除上述方法外，也可以在指定位置手动新建文件夹，<code>cd</code>到该文件夹后分别执行<code>npx hexo init</code>和<code>npm install</code>命令创建博客。新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<p>在命令行中输入<code>npx hexo s</code>，在浏览器中打开localhost:4000能看到Hexo生成的本地博客静态页面。<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551181428283.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"><br>预览结束后，键入<code>Ctrl+C</code>关闭hexo server。</p>
+<h2 id="部署静态博客到GitHub-pages"><a href="#部署静态博客到GitHub-pages" class="headerlink" title="部署静态博客到GitHub pages"></a>部署静态博客到GitHub pages</h2><p>本地博客搭建成功后，需要通过git工具将本地静态网页发布到Github。在此之前，首先需要注册Github账号，并配置对应仓库。</p>
+<h3 id="Github账号注册与仓库配置"><a href="#Github账号注册与仓库配置" class="headerlink" title="Github账号注册与仓库配置"></a>Github账号注册与仓库配置</h3><ol>
+<li>注册<a target="_blank" rel="noopener" href="https://github.com/">github</a>账号，指定用户名<code>user_name</code>。</li>
+<li>登录账号，新建仓库（头像左侧→New repository）,仓库名为<code>user_name.github.io</code>，设置仓库为<code>Public</code>，并添加<code>README</code>文件<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551094128956.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></li>
+</ol>
+<h3 id="链接本地Git与Github"><a href="#链接本地Git与Github" class="headerlink" title="链接本地Git与Github"></a>链接本地Git与Github</h3><p>Github仓库配置好后，下一步是将本地Git与Github链接，为将本地博客发布至Github pages做好准备。本地Git与Github链接通过设置ssh秘钥来完成，设置步骤如下：</p>
+<ol>
+<li>打开终端，设置本地Git的用户名和邮箱，注意要与Github相同：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>设置完成后，使用以下命令检查是否输入正确:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>在终端内执行下面命令，生成SSH秘钥。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ssh简单而言是一个秘钥，id_rsa是本地电脑的私人秘钥，id_rsa.pub是公共秘钥。公钥放在Github上，当链接本地与Github时，会根据公钥匹配私钥，匹配上则成功链接，之后可以用Git上传本地文件到Github上。</p>
+</blockquote>
+</li>
+<li><p>找到生成的.ssh文件夹中的<code>id_rsa.pub</code>秘钥，使用文本编辑器打开，复制<code>全部</code>内容。将其粘贴到<code>Github网站</code>→<code>头像</code>→<code>Settings</code>→<code>SSH and GPG keys</code>→<code>New SSH key</code>。<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551102710873.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+</li>
+</ol>
+<p>名字随便取，粘贴完成后，点击<code>Add SSH key</code>。</p>
+<ol start="4">
+<li>使用终端检查Github公钥是否成功设置，在终端中输入<code>ssh git@github.com</code>，如果输出部分出现你的用户名，则代表设置成功。<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/13/16551195539085.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></li>
+</ol>
+<h3 id="发布网站"><a href="#发布网站" class="headerlink" title="发布网站"></a>发布网站</h3><p>将本地Git也和Github成功链接后，接下来要做的就是把本地搭的网站发布出去，让网站可以被其他人访问。</p>
+<ol>
+<li>打开本地blog根目录下的站点配置文件_config.yml，该文件用于配置博客的基本信息，称之为<code>站点配置文件</code>。</li>
+<li>修改站点配置文件_config.yml的最后一行配置并保存。其中，<code>user_name</code>为Github账户的用户名</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:user_name/user_name.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：这里的<code>branch</code>可以设置为<code>main</code>或者<code>master</code>，但务必与Github仓库中<code>Settings</code>–<code>Pages</code>–<code>Source</code>–<code>Branch</code>相匹配，否则即使上传成功也看不到你的网站。这里的<code>Settings</code>指的是仓库的<code>Settings</code></p>
+<p>修改deploy其实是在给网站部署命令<code>hexo d</code>做相应配置，使用该命令进行部署时，hexo就能知道要把blog部署到Github的博客仓库中。</p>
+<ol start="3">
+<li><p>安装git部署插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行以下命令，发布网站</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean //清除缓存，若是网页正常情况下可以忽略这条命令</span><br><span class="line">npx hexo g //生成静态网页</span><br><span class="line">npx hexo d //部署</span><br></pre></td></tr></table></figure>
+<p>部署完成后，打开浏览器，输入博客仓库路径user_name.github.io，就能看到发布的博客了。</p>
+</li>
+</ol>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>博客发布成功后，还需要对博客进行优化，使博客的呈现和书写更加美观舒适，具体还包含以下部分：</p>
+<ol>
+<li>修改主题样式，修改博客名称、简介、用户头像等内容。</li>
+<li>增加主页、分类、标签、关于等标签和页面。</li>
+<li>搭建图床，利用合适的Markdown软件开始进行博客创作。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E7%A8%8B/" rel="tag"># 教程</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ze-yuan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
