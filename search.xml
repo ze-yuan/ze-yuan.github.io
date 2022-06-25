@@ -92,4 +92,118 @@
         <tag>Github</tag>
       </tags>
   </entry>
+  <entry>
+    <title>基于Hexo和github搭建个人博客-基础配置篇②</title>
+    <url>/2022/06/25/%E5%9F%BA%E4%BA%8EHexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%872/</url>
+    <content><![CDATA[<p>基于Hexo生成本地博客并将其成功部署到Github Pages之后，下一步是对博客的主题和发布方式等进行优化，使其满足实际的使用需求。</p>
+<span id="more"></span>
+
+<h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p>基于Hexo的博客框架支持多种主题，可以在<a href="https://hexo.io/themes/">这里</a>下载。下载完成后，将主题文件拷贝至博客站点目录的 <code>themes</code>文件夹下， 修改配置文件，即可启用主题。这里，以Next主题为例，介绍其下载、安装和配置的过程</p>
+<h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><p>Next主题提供两种安装方式，其一是直接下载<code>源码（source code）</code>（<a href="https://theme-next.js.org/">官方网站</a>）并拷贝至 <code>themes</code>文件夹下安装；其二则是通过<code>npm</code>命令进行安装。如果Hexo的版本为5.0以上，使用<code>npm</code>命令安装则更为简单。为此，这里介绍使用<code>npm</code>命令进行安装的过程。打开终端，执行以下命令，即可完成安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd hexo-site  //打开站点目录</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，可以在<code>node_modules/hexo-theme-next</code>目录下找到相关文件。</p>
+<h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>安装完Hexo和Next后，站点文件夹下会包含对应Hexo和Next的两个配置文件，名称均为<code>_config.yml</code>:</p>
+<ol>
+<li>第一个位于<code>站点文件夹根目录</code>下，主要负责Hexo相关的配置。</li>
+<li>第二个位于<code>主题文件夹根目录（node_modules/hexo-theme-next/_config.yml）</code>下，主要负责Next主题相关的配置。</li>
+</ol>
+<p>这里，将第一个配置文件称为<code>站点配置文件</code>，第二个文件称为<code>主题配置文件</code>。打开<code>站点配置文件</code>，找到<code>theme</code>字段，并将其值修改为<code>next</code>即可启用主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<p>主题启用后，在终端里执行下面命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">npx hexo s</span><br></pre></td></tr></table></figure>
+<p>在浏览器中打开localhost:4000，即可看到启用了Next主题后的博客页面。<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16556226276503.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<p>Next支持4种布局外观（Scheme），可以在<code>主题配置文件</code>中通过<code>scheme</code>字段进行修改，可以通过增加<code>#</code>或去掉<code>#</code>符号进行使能和使能对应布局：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+<p><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16556237521134.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<h3 id="主题配置-1"><a href="#主题配置-1" class="headerlink" title="主题配置"></a>主题配置</h3><h4 id="设置站点名称、描述、作者信息"><a href="#设置站点名称、描述、作者信息" class="headerlink" title="设置站点名称、描述、作者信息"></a>设置站点名称、描述、作者信息</h4><p>站点名称、描述和作者信息等设置在<code>站点配置文件</code>内进行，可以通过修改<code>#Site</code>注释下的相关字段实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title:            # 站点名称</span><br><span class="line">subtitle: &#x27;&#x27;      # 站点副标题</span><br><span class="line">description: &#x27;&#x27;   # 站点描述</span><br><span class="line">keywords:</span><br><span class="line">author:           # 作者名称</span><br><span class="line">language: zh-CN   # 若简体中文则为zh-CN</span><br><span class="line">timezone: &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>作者头像的设置可以通过修改<code>主题配置文件</code>中的相应字段实现。打开<code>主题配置文件</code>，修改<code>avatar</code>字段，值设置为头像的链接地址。其中，头像的链接地址可以是：</p>
+<ol>
+<li>完整的互联网 URI，如：<code>http://example.com/avatar.png</code>。</li>
+<li>站点内地址，如：<code>/images/avatar.png</code>。</li>
+</ol>
+<p>若使用站点内地址，需将图片放置在<code>主题文件夹/source/images/</code>目录下。</p>
+<p>圆形头像可以在<code>avatar</code>字段下方通过修改<code>rounded</code>字段实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be displayed in circle.</span><br><span class="line">  rounded: ture</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置菜单和页面"><a href="#设置菜单和页面" class="headerlink" title="设置菜单和页面"></a>设置菜单和页面</h4><p>菜单设置在<code>主题配置文件</code>内进行，可以通过修改<code># Menu Settings</code>注释下的相关字段进行设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home                      #主页</span><br><span class="line">  about: /about/ || fa fa-user               #关于</span><br><span class="line">  tags: /tags/ || fa fa-tags                 #标签</span><br><span class="line">  categories: /categories/ || fa fa-th       #分类</span><br><span class="line">  archives: /archives/ || fa fa-archive      #归档</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<p>删去相关字段前的<code>#</code>符号，即可启用对应的菜单。若无特别设置，菜单的文字会根据主题的语言进行翻译（翻译对照表可在<code>languages/zh-CN.yml</code>中找到），而菜单对应的图标则由<a href="https://fontawesome.com/">Font Awesome</a> 提供的图标字段(如<code>fa fa-home</code>)决定。</p>
+<p>上述设置只是在博客网页中生成了相应的菜单和超链接，还未包含菜单标签对应的网页。因此，还需生成并链接对应的网页。</p>
+<p><strong>以新建“标签”页为例：</strong> 打开终端，定位到<code>站点根目录</code>下，使用 <code>hexo new page</code>新建一个页面，命名为<code>tags</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>新建完成后，会在<code>source/tags</code>文件夹下生成对应的的<code>index.md</code>文件。编辑<code>index.md</code>文件，将页面的分类设置为<code>tags</code>，便完成了菜单和页面的链接。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2022-06-23 12:31:00</span><br><span class="line">type: &quot;tags&quot; </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>同理，若菜单中还使能了<code>关于</code>、<code>分类</code>等字段，还需要使用同样的方法新建相关页面，并完成对应的链接。对应页面的<code>type</code>字段后的值需与<code>主题配置文件</code>中<code># Menu Settings</code>注释下的相关字段一致。</p>
+<h4 id="添加网站访问量、文章阅读数等信息"><a href="#添加网站访问量、文章阅读数等信息" class="headerlink" title="添加网站访问量、文章阅读数等信息"></a>添加网站访问量、文章阅读数等信息</h4><p>新版本的<code>Next</code>内部已经集成了<code>busuanzi</code>，只需要打开<code>主题配置文件</code>，修改<code>busuanzi</code>下的相关字段即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: ture  #修改使能为ture</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置本地搜索功能"><a href="#设置本地搜索功能" class="headerlink" title="设置本地搜索功能"></a>设置本地搜索功能</h4><p>添加本地自定义站点内容搜索，可以通过文字标题或文字内容关键字搜索出相应文章。</p>
+<p>安装<code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<p>编辑<code>站点配置文件</code>，新增以下内容到任意位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Search</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+<p>编辑<code>主题配置文件</code>，启用本地搜索功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: ture #修改为ture</span><br></pre></td></tr></table></figure>
+
+<h2 id="博客撰写和发布"><a href="#博客撰写和发布" class="headerlink" title="博客撰写和发布"></a>博客撰写和发布</h2><h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><p>新建博客可以通过在终端输入<code>hexo new post &quot;article title&quot;</code>实现。新建完成后，<code>./source/_post</code>目录下会出现对应的<code>.md</code>文件。打开该文件，可以看到文章代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: article title    </span><br><span class="line">date: 2022-06-23 12:52:32</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>默认的模板包含了文章标题、创建时间、标签等信息。</p>
+<h3 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h3><p>新建博客完成后，可以对文章的标题和创建时间进行修改。同时，还可以对文章增加标签和分类，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: article title    </span><br><span class="line">date: 2022-06-23 12:52:32</span><br><span class="line">tags: </span><br><span class="line">    - 教程</span><br><span class="line">    - Hexo</span><br><span class="line">    - Github</span><br><span class="line">categories: </span><br><span class="line">    - 博客搭建</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>博客的正文书写在上述命令描述后。当博客撰写完成后，使用以下命令便可以将博客发布到Github pages上。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">npx hexo d</span><br></pre></td></tr></table></figure>
+<h3 id="设置「阅读全文」按钮"><a href="#设置「阅读全文」按钮" class="headerlink" title="设置「阅读全文」按钮"></a>设置「阅读全文」按钮</h3><p>有时，我们希望博客的主页仅显示文章的部分内容，并包含一个“阅读全文”的按钮用于链接全文。为此，我们可以在撰写的文章中插入一下描述符：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>Hexo会将描述符之前的文章内容会显示在主页中，而其后的文章内容则会隐藏，并在主页中自动生成“阅读全文”的按钮。</p>
+<h3 id="博客撰写优化和图床"><a href="#博客撰写优化和图床" class="headerlink" title="博客撰写优化和图床"></a>博客撰写优化和图床</h3><p>通常，一篇博客不仅包含文字，同时也包含与文字对应的图片。由于Hexo博客采用Markdown书写，其本身是一种种轻量级标记语言，无法包含图片。因此，使用Markdown书写的博客，其图片只能通过外部引用的方式插入。常见的在Markdown中插入图片的方法有两种：1. 本地图片插入；2.网络图床插入。</p>
+<p>其中，本地图片插入的方法最为简单，但插入的图片需要上传至Github，会占用Github的储存空间，且上传在Github的图片访问往往不稳定。为此，最好使用网络图床插入的方法。</p>
+<p>图床一般是指储存图片的服务器，目前有阿里云OSS、腾讯云COS、七牛等等。这里，以<code>阿里云OSS（付费）</code>结合<code>Mweb Pro</code>为例，介绍图床搭建和博客书写的过程。</p>
+<h4 id="图床创建"><a href="#图床创建" class="headerlink" title="图床创建"></a>图床创建</h4><p>首先，打开<a href="https://www.aliyun.com/product/oss">阿里云OSS</a>服务网址，注册账号，申请免费试用或直接购买开通最低配置（标准），支付。</p>
+<p><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561574356682.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<p>支付完成后，进入阿里云OSS控制台，在左侧菜单栏选择<code>Bucket列表</code>并选择<code>创建Bucket</code>。</p>
+<p><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561577228741.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<p>按要求填好Bucket名称，并设置Bucket的读写权限为<code>公共读</code>。</p>
+<p><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561579150502.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<p>至此，图床便创建完毕了。</p>
+<h4 id="链接图床到MWeb"><a href="#链接图床到MWeb" class="headerlink" title="链接图床到MWeb"></a>链接图床到MWeb</h4><p>下载并安装Mweb，打开<code>偏好设置</code>→<code>发布服务</code>→<code>阿里云OSS</code>。</p>
+<p><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561585733944.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<ol>
+<li><code>名称</code>随便填入</li>
+<li><code>存储地域</code>选择刚才创建的Bucket的地方</li>
+<li><code>Bucket名称</code>填入刚创建的Bucket的名称</li>
+<li><code>Access Key ID &amp; Secret</code>在阿里云控制台<code>常用入口</code>的<code>Access Key</code>中创建并分别填入。</li>
+<li><code>域名</code>填入<code>https://Bucket域名/</code>，其中<code>Bucket域名</code>可在创建的Bucket的<code>概览</code>中获得</li>
+<li><code>图片处理代码</code>可在<code>Bucket</code>→<code>数据处理</code>→<code>图片处理</code>中获得。<br> <img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561594978135.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></li>
+</ol>
+<p>点击<code>新建样式</code>，根据自己的需求进行设置，并点击生成。生成代码后，将代码复制，并加上前缀<code>?x-oss-process=</code>，填入到Mweb中即可。如：代码为<code>image/auto-orient,1/quality,q_90/format,jpg</code>，加上前缀后，最终填入Mweb的为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg</span><br></pre></td></tr></table></figure>
+
+<h4 id="图片上传至图床和博客发布"><a href="#图片上传至图床和博客发布" class="headerlink" title="图片上传至图床和博客发布"></a>图片上传至图床和博客发布</h4><p>链接完成后，即可正常撰写博客，并将插入到博客的文件一键上传至图床。</p>
+<p>这里，推荐现在Mweb文档库中撰写“预发布的博客”，撰写博客过程中，图片可以直接拖入文章中，拖入的图片会暂存到本地文档库文件夹的对应位置。当“预发布的博客”撰写完成后，可以点击右上角的<code>分享图标</code>并选择<code>把本地图片上传至图床</code>。<br><img src="http://mwebzyblog.oss-cn-beijing.aliyuncs.com/2022/06/25/16561624848492.jpg?x-oss-process=image/auto-orient,1/quality,q_90/format,jpg"></p>
+<p>点击<code>复制Markdown</code>，Mweb会自动将所有本地图片上传至图床，并将图片链接从<code>本地地址</code>转换为<code>图床地址</code>。之后，将复制的内容直接粘贴到本地网站对应的文章文件中即可（<code>站点目录/source/_post/文章.md</code>）。</p>
+<p>复制完成后，可以使用以下命令进行预览和发布。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">npx hexo s       #本地预览</span><br><span class="line">npx hexo d       #发布</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://godweiyang.com/2018/04/13/hexo-blog/#toc-heading-10">超详细Hexo+Github博客搭建小白教程</a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html">Next使用文档</a></li>
+<li><a href="https://blog.csdn.net/mqdxiaoxiao/article/details/93257866">Hexo个人博客NexT主题添加Local Search本地搜索</a></li>
+<li><a href="https://zh.mweb.im/how_to_use_aliyun_cos.html">如何使用阿里云 OSS 图床</a></li>
+<li><a href="https://blog.csdn.net/rabbit_moon/article/details/111833115">阿里云OSS搭建图床</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
 </search>
